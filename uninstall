@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Remove the self-update cronjob and the local repo
+
+cd $( dirname "${BASH_SOURCE[0]}" )
+
+INSTALL="$( pwd )"
+DEPLOY="${INSTALL}/deploy"
+(crontab -l | grep -v "$DEPLOY" | crontab -)
+
+cd ..
+rm -rf $INSTALL

@@ -1,14 +1,19 @@
 #!/bin/bash
 
+# Installs itself as a cronjob to run every few minutes
+# to refresh the repo and run the post-deploy script
+
 cd $( dirname "${BASH_SOURCE[0]}" )
+SELF="$( pwd )/deploy"
+PERIOD=15
 
 git pull
 
-# Install a self-update cronjob if needed
-(crontab -l | grep -q $( pwd )/deploy) || \
-    ((crontab -l 2>/dev/null; echo "*/15 * * * * $( pwd )/deploy") | crontab -)
+# Install a self-call cronjob if needed
+(crontab -l | grep -q "$SELF") || \
+    ((crontab -l 2>/dev/null; echo "*/${PERIOD} * * * * ${SELF}") | crontab -)
 
 # Run the actual job related stuff
 if [ -f ./post-deploy ]; then
-    exec ./post-deploy
+    ./post-deploy
 fi

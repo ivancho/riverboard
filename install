@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# one-time setup script to be downloaded and run directly,
+# will do a deploy if already set up locally.
+
 REPO=riverboard
 URL="git@github.com:ivancho/${REPO}.git"
 
@@ -13,6 +16,7 @@ else
         mv -f ./$REPO $(mktemp -d "./old.${REPO}.XXXX/")
     fi
 
+    # into the install directory $HOME/$REPO
     git clone $URL
 fi
 
