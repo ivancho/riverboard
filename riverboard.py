@@ -65,5 +65,4 @@ def show_servo_values():
 if __name__ == '__main__':
   while True:
     set_from_api()
-    sleep(1)
-    show_servo_values()
+    sleep(900)

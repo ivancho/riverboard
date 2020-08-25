@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd $( dirname "${BASH_SOURCE[0]}" )
+
+echo "Need some bacon-fried cookie dough"

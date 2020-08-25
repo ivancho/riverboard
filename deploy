@@ -1,0 +1,14 @@
+#!/bin/bash
+
+cd $( dirname "${BASH_SOURCE[0]}" )
+
+git pull
+
+# Install a self-update cronjob if needed
+(crontab -l | grep -q $( pwd )/deploy) || \
+    ((crontab -l 2>/dev/null; echo "*/15 * * * * $( pwd )/deploy") | crontab -)
+
+# Run the actual job related stuff
+if [ -f ./post-deploy ]; then
+    exec ./post-deploy
+fi

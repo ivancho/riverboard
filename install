@@ -1,0 +1,19 @@
+#!/bin/bash
+
+REPO=riverboard
+URL="git@github.com:ivancho/${REPO}.git"
+
+cd $HOME
+
+if [ -d ./$REPO/.git ]; then
+    git -C ./$REPO pull
+else
+    if [ -d ./$REPO ]; then
+        # residual directory from non-git development, put to the side
+        mv -f ./$REPO $(mktemp -d "./old.${REPO}.XXXX/")
+    fi
+
+    git clone $URL
+fi
+
+./$REPO/deploy
