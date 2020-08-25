@@ -17,8 +17,10 @@ else
         mv -f ./$REPO $(mktemp -d "./old.${REPO}.XXXX")
     fi
 
+    mkdir -p $HOME/$REPO
+    cd $HOME/$REPO
     # into the install directory $HOME/$REPO
-    git clone $URL
+    git clone $URL .
 fi
 
 ./$REPO/deploy
