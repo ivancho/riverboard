@@ -3,8 +3,9 @@
 # one-time setup script to be downloaded and run directly,
 # will do a deploy if already set up locally.
 
+USER=drewwestphal
 REPO=riverboard
-URL="git@github.com:ivancho/${REPO}.git"
+URL="git@github.com:${USER}/${REPO}.git"
 
 cd $HOME
 
@@ -13,7 +14,7 @@ if [ -d ./$REPO/.git ]; then
 else
     if [ -d ./$REPO ]; then
         # residual directory from non-git development, put to the side
-        mv -f ./$REPO $(mktemp -d "./old.${REPO}.XXXX/")
+        mv -f ./$REPO $(mktemp -d "./old.${REPO}.XXXX")
     fi
 
     # into the install directory $HOME/$REPO
