@@ -5,11 +5,12 @@
 
 USER=drewwestphal
 REPO=riverboard
-URL="git@github.com:${USER}/${REPO}.git"
+URL="https://github.com/${USER}/${REPO}.git"
 
 cd $HOME
 
 if [ -d ./$REPO/.git ]; then
+    git remote set-url "$URL"
     git -C ./$REPO pull
 else
     if [ -d ./$REPO ]; then
@@ -17,10 +18,8 @@ else
         mv -f ./$REPO $(mktemp -d "./old.${REPO}.XXXX")
     fi
 
-    mkdir -p $HOME/$REPO
-    cd $HOME/$REPO
     # into the install directory $HOME/$REPO
-    git clone $URL .
+    git clone $URL
 fi
 
 ./$REPO/deploy
