@@ -1,0 +1,14 @@
+# thanks to https://github.com/torfsen/python-systemd-tutorial
+
+[Unit]
+Description=Riverboard Servos
+
+[Service]
+ExecStart=/usr/bin/python ~/riverboard/riverboard_servos.py
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+
+
+# Automatically Starting the Service during Boot
+[Install]
+WantedBy=default.target

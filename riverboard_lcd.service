@@ -1,0 +1,14 @@
+# thanks to https://github.com/torfsen/python-systemd-tutorial
+
+[Unit]
+Description=Riverboard LCD
+
+[Service]
+ExecStart=/usr/bin/python ~/riverboard/riverboard_lcd.py
+Environment=PYTHONUNBUFFERED=1
+Restart=on-failure
+EnvironmentFile=~/.env
+
+# Automatically Starting the Service during Boot
+[Install]
+WantedBy=default.target

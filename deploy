@@ -7,6 +7,11 @@ cd $( dirname "${BASH_SOURCE[0]}" )
 SELF="$( pwd )/deploy"
 PERIOD=15
 
+# being developed in drew's and ivans atm
+USER=drewwestphal
+REPO=riverboard
+URL="https://github.com/${USER}/${REPO}.git"
+git remote set-url "$URL"
 git pull
 
 # Install a self-call cronjob if needed
