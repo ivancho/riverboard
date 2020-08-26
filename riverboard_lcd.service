@@ -7,7 +7,7 @@ Description=Riverboard LCD
 ExecStart=/usr/bin/python ~/riverboard/riverboard_lcd.py
 Environment=PYTHONUNBUFFERED=1
 Restart=on-failure
-EnvironmentFile=~/.env
+EnvironmentFile=/home/pi/.env
 
 # Automatically Starting the Service during Boot
 [Install]
