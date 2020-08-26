@@ -12,20 +12,32 @@ $ GPIOZERO_PIN_FACTORY=pigpio python
 
 ### Setting up services
 
-    # set environment variables
-    # edit /home/pi/env
+    # pigpiod must be running -- it should be installed
+    sudo systemctl status pigpiod.service
+    # it is a system service and cannot be depended on by user services like our python stuff
+
+    # user needs to run when no one is logged in
+    sudo loginctl enable-linger pi
+
+    # edit sensitive environment variables
+    # edit /home/pi/.riverboard_lcd.env (there are already some values that are needed in there)
 
     # link it up
     ln -s /home/pi/riverboard/riverboard_lcd.service ~/.config/systemd/user/
     # reload the daemons
-    systemctl daemon-reload --user
+    systemctl --user daemon-reload
     # see if it's there
     systemctl --user list-unit-files | grep riverboard
     # see if there's issues
     systemd-analyze verify riverboard_lcd.service
     #start it
-    systemctl start riverboard_lcd --user
+    systemctl --user start riverboard_lcd
     # see status
     systemctl status --user riverboard_lcd
     # see messages this boot
-    journalctl -u riverboard_lcd.service -b
+    journalctl --user-unit riverboard_lcd.service
+
+    # enable it (& start it) to survive restarts
+    systemctl --user enable riverboard_lcd
+    systemctl --user start riverboard_lcd
+    systemctl --user status riverboard_lcd
