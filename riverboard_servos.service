@@ -4,8 +4,9 @@
 Description=Riverboard Servos
 
 [Service]
-ExecStart=GPIOZERO_PIN_FACTORY=pigpio /usr/bin/python /home/pi/riverboard/riverboard_servos.py
+ExecStart=/usr/bin/python /home/pi/riverboard/riverboard_servos.py
 Environment=PYTHONUNBUFFERED=1
+Environment=GPIOZERO_PIN_FACTORY=pigpio
 Restart=on-failure
 
 

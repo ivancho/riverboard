@@ -24,12 +24,14 @@ $ GPIOZERO_PIN_FACTORY=pigpio python
 
     # link it up
     ln -s /home/pi/riverboard/riverboard_lcd.service ~/.config/systemd/user/
+    ln -s /home/pi/riverboard/riverboard_servos.service ~/.config/systemd/user/
     # reload the daemons
     systemctl --user daemon-reload
     # see if it's there
     systemctl --user list-unit-files | grep riverboard
     # see if there's issues
     systemd-analyze verify riverboard_lcd.service
+    systemd-analyze verify riverboard_servos.service
     #start it
     systemctl --user start riverboard_lcd
     # see status
