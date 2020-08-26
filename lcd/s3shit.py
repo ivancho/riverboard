@@ -59,7 +59,7 @@ def loop():
         lcd.message(line1msg + '\n' + line2msg)
         sleep(1.3)
 
-        for i in range(max(len(line1msg,line2msg))-16):         
+        for i in range(max(len(line1msg), len(line2msg))-16):         
             lcd.DisplayLeft()
             sleep(.55)
         
