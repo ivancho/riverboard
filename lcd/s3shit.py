@@ -20,8 +20,8 @@ LINE 2 of the display: show some UV and sunset data
 
 # LINE 1 
 botosess = boto3.Session(
-    aws_access_key_id=os.environ['LCD_TEASER_AWS_ACCESS_KEY'],
-    aws_secret_access_key=os.environ['LCD_TEASER_AWS_SECRET_KEY'],
+    aws_access_key_id=os.environ['LCD_TEASER_AWS_ACCESS_KEY_ID'],
+    aws_secret_access_key=os.environ['LCD_TEASER_AWS_SECRET_ACCESS_KEY'],
 )
 
 s3 = botosess.resource('s3')
