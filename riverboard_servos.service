@@ -4,7 +4,7 @@
 Description=Riverboard Servos
 
 [Service]
-ExecStart=/usr/bin/python ~/riverboard/riverboard_servos.py
+ExecStart=/usr/bin/python /home/pi/riverboard/riverboard_servos.py
 Environment=PYTHONUNBUFFERED=1
 Restart=on-failure
 
