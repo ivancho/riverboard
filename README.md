@@ -35,9 +35,6 @@ $ GPIOZERO_PIN_FACTORY=pigpio python
     #start it
     systemctl --user start riverboard_lcd
     systemctl --user start riverboard_servos
-    # see status
-    systemctl status --user riverboard_lcd
-    systemctl status --user riverboard_servos
 
     # enable it (& start it) to survive restarts
     systemctl --user enable riverboard_lcd
@@ -48,6 +45,14 @@ $ GPIOZERO_PIN_FACTORY=pigpio python
     systemctl --user start riverboard_servos
     systemctl --user status riverboard_servos
 
+    # see status
+    systemctl status --user riverboard_lcd
+    systemctl status --user riverboard_servos
+
     # see messages
     journalctl --user-unit riverboard_lcd.service
     journalctl --user-unit riverboard_servos.service
+
+    # stop them
+    systemctl stop --user riverboard_lcd
+    systemctl stop --user riverboard_servos
