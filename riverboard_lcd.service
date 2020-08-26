@@ -4,7 +4,7 @@
 Description=Riverboard LCD
 
 [Service]
-ExecStart=/usr/bin/python ~/riverboard/riverboard_lcd.py
+ExecStart=/usr/bin/python /home/pi/riverboard/riverboard_lcd.py
 Environment=PYTHONUNBUFFERED=1
 Restart=on-failure
 EnvironmentFile=/home/pi/.env
