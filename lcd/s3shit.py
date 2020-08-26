@@ -26,9 +26,9 @@ LINE 2 of the display: show some UV and sunset data
 
 @dataclass
 class APIResponses:
-    sunrisetimestamp: int
-    sunsettimestamp: int
-    lastcalledtimestamp: int
+    sunrisetimestamp: float
+    sunsettimestamp: float
+    lastcalledtimestamp: float
     teasermsg: str
     uvstringmsg: str
 
@@ -46,7 +46,7 @@ class APIResponses:
         nightcalls = apicallsperday-daycalls
         daylen = self.sunsettimestamp-self.sunrisetimestamp
         nightlen = 24*60*60-daylen
-        print(apicallsperday, daycalls, nightcalls)
+        #print(apicallsperday, daycalls, nightcalls)
 
         now = time.time()
         if now > self.sunrisetimestamp and now < self.sunsettimestamp:
@@ -55,7 +55,6 @@ class APIResponses:
         return math.ceil(nightlen/nightcalls)
 
     def time_for_next_call(self) -> bool:
-        print(self)
         return time.time() > (self.lastcalledtimestamp+self.call_interval_seconds())
 
 
@@ -109,6 +108,7 @@ def loop():
     while(True):
         if resp is None or resp.time_for_next_call():
             resp = remote_calls()
+            print(resp)
 
         lcd.setCursor(0, 0)  # set cursor position
         lcd.message(resp.full_lcd_msg())
