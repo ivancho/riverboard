@@ -34,12 +34,20 @@ $ GPIOZERO_PIN_FACTORY=pigpio python
     systemd-analyze verify riverboard_servos.service
     #start it
     systemctl --user start riverboard_lcd
+    systemctl --user start riverboard_servos
     # see status
     systemctl status --user riverboard_lcd
-    # see messages this boot
-    journalctl --user-unit riverboard_lcd.service
+    systemctl status --user riverboard_servos
 
     # enable it (& start it) to survive restarts
     systemctl --user enable riverboard_lcd
     systemctl --user start riverboard_lcd
     systemctl --user status riverboard_lcd
+
+    systemctl --user enable riverboard_servos
+    systemctl --user start riverboard_servos
+    systemctl --user status riverboard_servos
+
+    # see messages
+    journalctl --user-unit riverboard_lcd.service
+    journalctl --user-unit riverboard_servos.service

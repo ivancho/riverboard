@@ -4,6 +4,8 @@
 Description=Riverboard Servos
 
 [Service]
+# https://stackoverflow.com/a/57469241
+ExecStartPre=/bin/sh -c 'until ping -c1 google.com; do sleep 1; done;'
 ExecStart=/usr/bin/python /home/pi/riverboard/riverboard_servos.py
 Environment=PYTHONUNBUFFERED=1
 Environment=GPIOZERO_PIN_FACTORY=pigpio
