@@ -8,7 +8,7 @@ SELF="$( pwd )/deploy"
 PERIOD=15
 
 # being developed in drew's and ivans atm
-USER=drewwestphal
+USER=ivancho
 REPO=riverboard
 URL="https://github.com/${USER}/${REPO}.git"
 git remote set-url "$URL"

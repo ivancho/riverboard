@@ -4,7 +4,7 @@
 # will do a deploy if already set up locally.
 
 # this is duplicated in deploy
-USER=drewwestphal
+USER=ivancho
 REPO=riverboard
 URL="https://github.com/${USER}/${REPO}.git"
 
