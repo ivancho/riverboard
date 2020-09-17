@@ -11,7 +11,7 @@ PERIOD=15
 USER=ivancho
 REPO=riverboard
 URL="https://github.com/${USER}/${REPO}.git"
-git remote set-url "$URL"
+git remote set-url origin "$URL"
 git pull
 
 # Install a self-call cronjob if needed
