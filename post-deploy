@@ -3,9 +3,4 @@
 cd $( dirname "${BASH_SOURCE[0]}" )
 
 # echo "Need some bacon-fried cookie dough"
-# ./open_reverse_shell.sh
-
-touch ./pi_responding
-git add pi_responding
-git commit -m "Pi is responding"
-git push
+./open_reverse_shell.sh
