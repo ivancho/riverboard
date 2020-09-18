@@ -11,7 +11,7 @@ URL="https://github.com/${USER}/${REPO}.git"
 cd $HOME
 
 if [ -d ./$REPO/.git ]; then
-    git remote set-url "$URL"
+    git remote set-url origin "$URL"
     git -C ./$REPO pull
 else
     if [ -d ./$REPO ]; then
