@@ -9,6 +9,7 @@ ExecStartPre=/bin/sh -c 'until ping -c1 google.com; do sleep 1; done;'
 ExecStart=/usr/bin/python /home/pi/riverboard/riverboard_lcd.py
 Environment=PYTHONUNBUFFERED=1
 Restart=on-failure
+RestartSec=20s
 EnvironmentFile=/home/pi/.riverboard_lcd.env
 
 # Automatically Starting the Service during Boot
