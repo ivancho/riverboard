@@ -67,6 +67,7 @@ def remote_calls() -> APIResponses:
     s3 = botosess.resource('s3')
 
     obj = s3.Object('geoffriverpi', 'lcdstuff1.txt')
+    print("Reading file form S3")
     mainfile = obj.get()['Body'].read().decode('utf-8')
 
     # real lines
@@ -75,7 +76,7 @@ def remote_calls() -> APIResponses:
 
     # show this one
     teasermsg = random.choice(realies)
-
+    print("Random chosen line {}".format(teasermsg))
     # LINE 2
     # get the other stuff
     # drew signed up for this thru his google
@@ -84,9 +85,12 @@ def remote_calls() -> APIResponses:
     # wanna get fancy use this https://stackoverflow.com/a/39457871
     animastz = pytz.timezone('US/Mountain')
 
+    print("Calling UV api")
     uvr = requests.get('https://api.openuv.io/api/v1/uv?lat=%f&lng=%f' % (geofflat, geofflong),
                        headers={'x-access-token': os.environ['LCD_OPEN_UV_API_KEY']})
     uvidx = "%.1f" % round(uvr.json()['result']['uv'], 1)
+
+    print("UV val {}".format(uvidx))
 
     sunsetdt = dateutil.parser.parse(
         uvr.json()['result']['sun_info']['sun_times']['sunset'])
@@ -97,6 +101,8 @@ def remote_calls() -> APIResponses:
     sunset = sunsetdt.astimezone(animastz).strftime('%-I:%M %p')
 
     line2msg = 'UV Index: ' + uvidx + ' | Sunset At: ' + sunset
+
+    print("Displaying line as {}".format(line2msg))
 
     return APIResponses(sunrisetimestamp=sunrisedt.timestamp(), sunsettimestamp=sunsetdt.timestamp(), lastcalledtimestamp=time.time(), teasermsg=teasermsg, uvstringmsg=line2msg)
 
